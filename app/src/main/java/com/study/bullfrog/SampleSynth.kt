@@ -218,7 +218,7 @@ object SampleSynth {
                     var s = 0f
                     for (c in 0 until 3) {
                         val f = root * 2f.pow(ints[c] / 12f) * (1f + 0.004f * (c - 1))
-                        ph[c] += (f / SR).toDouble()
+                        ph[c] += f.toDouble() / SR
                         if (ph[c] >= 1.0) ph[c] -= 1.0
                         s += (ph[c].toFloat() * 2f - 1f) * 0.33f
                     }
@@ -281,7 +281,7 @@ object SampleSynth {
             val t = k.toFloat() / SR
             var s = 0f
             for (c in 0 until 6) {
-                ph[c] += (METAL[c] * base / SR).toDouble()
+                ph[c] += METAL[c].toDouble() * base / SR
                 if (ph[c] >= 1.0) ph[c] -= 1.0
                 s += if (ph[c] < 0.5) 1f else -1f
             }
@@ -310,7 +310,7 @@ object SampleSynth {
             val t = k.toFloat() / SR
             var s = 0f
             for (c in 0 until 6) {
-                ph[c] += (METAL[c] * base * 1.3f / SR).toDouble()
+                ph[c] += METAL[c].toDouble() * base.toDouble() * 1.3 / SR
                 if (ph[c] >= 1.0) ph[c] -= 1.0
                 s += if (ph[c] < 0.5) 1f else -1f
             }
